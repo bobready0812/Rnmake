@@ -60,10 +60,10 @@ const App: () => Node = () => {
   };
 
   return (
-    <View style={{flexDirection:"row"}}>
-      <View style={{width:200, height:100, backgroundColor:"tomato"}}></View>
-      <View style={{width:200, height:100, backgroundColor:"teal"}}></View>
-      <View style={{width:200, height:100, backgroundColor:"orange"}}></View>
+    <View style={{flex:1}}>
+      <View style={{flex:1,  backgroundColor:"tomato"}}></View>
+      <View style={{flex:1.5, backgroundColor:"teal"}}></View>
+      <View style={{flex:1,  backgroundColor:"orange"}}></View>
     </View>
   );
 };
