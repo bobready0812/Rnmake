@@ -16,6 +16,8 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 
 import {
@@ -25,6 +27,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { theme } from './Color';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -60,10 +63,16 @@ const App: () => Node = () => {
   };
 
   return (
-    <View style={{flex:1}}>
-      <View style={{flex:1,  backgroundColor:"tomato"}}></View>
-      <View style={{flex:1.5, backgroundColor:"teal"}}></View>
-      <View style={{flex:1,  backgroundColor:"orange"}}></View>
+    <View style={styles.container}>
+      <StatusBar />
+      <View style={styles.header}>
+        <TouchableOpacity>
+        <Text style={styles.btnText}>Work</Text>
+        </TouchableOpacity>
+        <TouchableHighlight underlayColor onPress={() => console.log("pressed")}>
+        <Text style={styles.btnText}>Travel </Text>
+        </TouchableHighlight>
+      </View>
     </View>
   );
 };
@@ -71,13 +80,23 @@ const App: () => Node = () => {
 const styles = StyleSheet.create({
 container:{
   flex:1,
-  backgroundColor: "#fff",
-  alignItems:"center",
-  justifyContent:"center"
+  backgroundColor: theme.bg,
+  paddingHorizontal: 20,
+  
 }  ,
-text: {
-  fontSize: 28,
+header: {
+  justifyContent:"space-between",
+  flexDirection:"row",
+  marginTop: 100,
+  
+} ,
+btnText: {
+  color:"white",
+  fontSize: 44,
+  fontWeight:"600",
+  
 }
+
 });
 
 export default App;
