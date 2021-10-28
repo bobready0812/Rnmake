@@ -60,11 +60,11 @@ const App: () => Node = () => {
   };
 
   return (
-    <View  style={styles.container} >
-      <Text style={styles.text}>Hello</Text>
-      <StatusBar style="auto"></StatusBar>
+    <View style={{flexDirection:"row"}}>
+      <View style={{width:200, height:100, backgroundColor:"tomato"}}></View>
+      <View style={{width:200, height:100, backgroundColor:"teal"}}></View>
+      <View style={{width:200, height:100, backgroundColor:"orange"}}></View>
     </View>
-    
   );
 };
 
