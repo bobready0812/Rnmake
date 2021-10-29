@@ -64,8 +64,10 @@ const App: () => Node = () => {
   };
 
   const [working, setWorking] = useState(true);
+  const [text, setText] = useState("");
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
+  const onChange = (payload) => setText(payload);
   return (
     
     <View style={styles.container}>
@@ -79,7 +81,10 @@ const App: () => Node = () => {
         </TouchableOpacity>
       </View>
       
-        <TextInput keyboardType="email-address" placeholder={working? "Add a To Do" : "Where Do You want to go?"} style={styles.input}/>
+        <TextInput onChange={onChange} value={text}
+        keyboardType="email-address" 
+        placeholder={working? "Add a To Do" : "Where Do You want to go?"} 
+        style={styles.input}/>
       
     </View>
     
