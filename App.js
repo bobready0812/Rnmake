@@ -78,9 +78,9 @@ const App: () => Node = () => {
         <Text style={{...styles.btnText, color: !working? "white" : theme.grey }}>Travel </Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <TextInput style={styles.}/>
-      </View>
+      
+        <TextInput keyboardType="email-address" placeholder={working? "Add a To Do" : "Where Do You want to go?"} style={styles.input}/>
+      
     </View>
     
   );
@@ -104,6 +104,13 @@ btnText: {
   fontSize: 44,
   fontWeight:"600",
   
+},
+input: {
+  backgroundColor:"white",
+  paddingHorizontal:20,
+  borderRadius: 30,
+  marginTop: 10,
+  fontSize:18,
 }
 
 });
