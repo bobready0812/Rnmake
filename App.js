@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -17,7 +17,8 @@ import {
   useColorScheme,
   View,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  TextInput
 } from 'react-native';
 
 import {
@@ -62,18 +63,26 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [working, setWorking] = useState(true);
+  const travel = () => setWorking(false);
+  const work = () => setWorking(true);
   return (
+    
     <View style={styles.container}>
       <StatusBar />
       <View style={styles.header}>
-        <TouchableOpacity>
-        <Text style={styles.btnText}>Work</Text>
+        <TouchableOpacity onPress={work}>
+        <Text style={{...styles.btnText, color: working? "white" : theme.grey}}>Work</Text>
         </TouchableOpacity>
-        <TouchableHighlight underlayColor onPress={() => console.log("pressed")}>
-        <Text style={styles.btnText}>Travel </Text>
-        </TouchableHighlight>
+        <TouchableOpacity onPress={travel}>
+        <Text style={{...styles.btnText, color: !working? "white" : theme.grey }}>Travel </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TextInput style={styles.}/>
       </View>
     </View>
+    
   );
 };
 
@@ -91,7 +100,7 @@ header: {
   
 } ,
 btnText: {
-  color:"white",
+  
   fontSize: 44,
   fontWeight:"600",
   
