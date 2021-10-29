@@ -65,9 +65,19 @@ const App: () => Node = () => {
 
   const [working, setWorking] = useState(true);
   const [text, setText] = useState("");
+  const [toDos, setToDos] = useState({});
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
-  const onChange = (payload) => setText(payload);
+  const onChangeText = (payload) => setText(payload);
+  const addToDo = () => {
+    if (text === "") {
+      return
+    }
+    const newToDos = {...toDos, [Date.now()] : {text, work: working}};  
+    setToDos(newToDos);
+    setText("");
+  }
+  
   return (
     
     <View style={styles.container}>
@@ -81,11 +91,15 @@ const App: () => Node = () => {
         </TouchableOpacity>
       </View>
       
-        <TextInput onChange={onChange} value={text}
-        keyboardType="email-address" 
+        <TextInput 
+        
+        onSubmitEditing={addToDo}
+        onChangeText={onChangeText} 
+        returnKeyType="done"
+        value={text}
         placeholder={working? "Add a To Do" : "Where Do You want to go?"} 
         style={styles.input}/>
-      
+      <ScrollView></ScrollView>
     </View>
     
   );
