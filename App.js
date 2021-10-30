@@ -75,9 +75,7 @@ const App: () => Node = () => {
       alert("nothing!");
     }
     
-    const newToDos = Object.assign({}, toDos, {
-      [Date.now()] : {text, work:working},
-    });
+    const newToDos = {...toDos, [Date.now()]: {text, work:working}};
     setToDos(newToDos);
     setText("");
     
@@ -150,7 +148,7 @@ toDo: {
 },
 toDoText: {
   fontSize: 16,
-  color:"white",
+  color:"#fff",
 }
 
 });
