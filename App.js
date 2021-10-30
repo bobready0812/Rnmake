@@ -99,7 +99,11 @@ const App: () => Node = () => {
         value={text}
         placeholder={working? "Add a To Do" : "Where Do You want to go?"} 
         style={styles.input}/>
-      <ScrollView></ScrollView>
+      <ScrollView>
+        {Object.keys(toDos).map((key) => <View styles={styles.toDo} key={key}>
+          <Text styles={styles.toDoText}>{toDos[key].text}</Text>
+        </View>)}
+      </ScrollView>
     </View>
     
   );
@@ -130,6 +134,12 @@ input: {
   borderRadius: 30,
   marginTop: 10,
   fontSize:18,
+},
+toDo: {
+ 
+},
+toDoText: {
+  color:"white",
 }
 
 });
