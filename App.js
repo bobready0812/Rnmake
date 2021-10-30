@@ -18,7 +18,8 @@ import {
   View,
   TouchableOpacity,
   TouchableHighlight,
-  TextInput
+  TextInput,
+  Alert
 } from 'react-native';
 
 import {
@@ -71,13 +72,18 @@ const App: () => Node = () => {
   const onChangeText = (payload) => setText(payload);
   const addToDo = () => {
     if (text === "") {
-      return
+      alert("nothing!");
     }
-    const newToDos = {...toDos, [Date.now()] : {text, work: working}};  
+    
+    const newToDos = Object.assign({}, toDos, {
+      [Date.now()] : {text, work:working},
+    });
     setToDos(newToDos);
     setText("");
+    
   }
   
+
   return (
     
     <View style={styles.container}>
@@ -98,7 +104,7 @@ const App: () => Node = () => {
         returnKeyType="done"
         value={text}
         placeholder={working? "Add a To Do" : "Where Do You want to go?"} 
-        style={styles.input}/>
+        style={styles.input}></TextInput>
       <ScrollView>
         {Object.keys(toDos).map((key) => <View styles={styles.toDo} key={key}>
           <Text styles={styles.toDoText}>{toDos[key].text}</Text>
@@ -136,9 +142,14 @@ input: {
   fontSize:18,
 },
 toDo: {
- 
+  backgroundColor:theme.toDoBg,
+  marginBottom:10,
+  paddingVertical:20,
+  paddingHorizontal:40,
+  borderRadius:15,
 },
 toDoText: {
+  fontSize: 16,
   color:"white",
 }
 
