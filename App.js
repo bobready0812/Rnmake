@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -22,6 +22,8 @@ import {
   Alert
 } from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+ 
 import {
   Colors,
   DebugInstructions,
@@ -59,10 +61,16 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const STORAGE_KEY = "@toDos"
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(() => {
+    loadToDos();
+  }, []);
+  
 
   const [working, setWorking] = useState(true);
   const [text, setText] = useState("");
@@ -70,13 +78,28 @@ const App: () => Node = () => {
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
   const onChangeText = (payload) => setText(payload);
-  const addToDo = () => {
+  const saveToDos = async(toSave) => {
+    const s = JSON.stringify(toSave);
+    await AsyncStorage.setItem(STORAGE_KEY, s);
+  }
+
+const loadToDos = async() =>{
+ const s = await AsyncStorage.getItem(STORAGE_KEY);
+ setToDos(JSON.parse(s));
+}
+
+
+  const addToDo = async() => { 
     if (text === "") {
       return
     }
     
-    const newToDos = {...toDos, [Date.now()]: {text, work:working}};
+    const newToDos = {
+      ...toDos, 
+      [Date.now()]: {text, working}
+    };
     setToDos(newToDos);
+    await saveToDos(newToDos);
     setText("");
     
   }
@@ -96,20 +119,17 @@ const App: () => Node = () => {
       </View>
       
       <TextInput 
-        
         onSubmitEditing={addToDo}
         onChangeText={onChangeText} 
         value={text}
         returnKeyType="done"
         placeholder={working? "Add a To Do" : "Where do you want to go?"} 
         style={styles.input} />
-      <ScrollView>
-        {Object.keys(toDos).map((key) => (
-         <View styles={styles.toDo} key={key}>
-          <Text styles={styles.toDoText}>{toDos[key].text}</Text>
-        </View>
-        ))}
-      </ScrollView>
+
+
+      <ScrollView>{Object.keys(toDos).map((key) => (toDos[key].working === working? <View style={styles.toDoIt} key={key}>
+        <Text style={styles.toDoText}>{toDos[key].text}</Text>
+      </View> : null ))}</ScrollView>
     </View>
     
   );
@@ -138,15 +158,18 @@ input: {
   backgroundColor:"white",
   paddingHorizontal:20,
   borderRadius: 30,
-  marginTop: 10,
+  marginVertical: 10,
   fontSize:18,
 },
-toDo: {
-  backgroundColor:theme.toDoBg,
-  marginBottom:10,
-  paddingVertical:20,
-  paddingHorizontal:40,
-  borderRadius:15,
+toDoIt: {
+  backgroundColor:theme.grey,
+  marginBottom: 10,
+  paddingVertical: 10,
+  paddingHorizontal: 40,
+  borderRadius: 15,
+
+
+
 },
 toDoText: {
   fontSize: 16,
