@@ -33,6 +33,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { theme } from './Color';
 
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -103,6 +104,21 @@ const loadToDos = async() =>{
     setText("");
     
   }
+
+  const deleteTodo = (key) => {
+    Alert.alert("Delete To Do", "Are you sure?", [
+      {text:"Cancle"},
+      {text: "I'm sure", onPress: async() => {
+        const newToDos = {...toDos}
+        delete newToDos[key]; 
+        setToDos(newToDos);
+        await saveToDos(newToDos);
+      }}
+    ]);
+    
+    return;
+   
+  }
    
 
   return (
@@ -129,6 +145,9 @@ const loadToDos = async() =>{
 
       <ScrollView>{Object.keys(toDos).map((key) => (toDos[key].working === working? <View style={styles.toDoIt} key={key}>
         <Text style={styles.toDoText}>{toDos[key].text}</Text>
+        <TouchableOpacity onPress={() => deleteTodo(key)}> 
+           <Text>❌</Text>
+        </TouchableOpacity>
       </View> : null ))}</ScrollView>
     </View>
     
@@ -162,11 +181,14 @@ input: {
   fontSize:18,
 },
 toDoIt: {
-  backgroundColor:theme.grey,
+  backgroundColor:theme.grey, 
   marginBottom: 10,
   paddingVertical: 10,
-  paddingHorizontal: 40,
+  paddingHorizontal: 20,
   borderRadius: 15,
+  flexDirection: "row",
+  alignItems:"center",
+  justifyContent:"space-between",
 
 
 
