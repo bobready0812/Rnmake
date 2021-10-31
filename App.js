@@ -33,7 +33,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { theme } from './Color';
 
-
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
