@@ -72,7 +72,7 @@ const App: () => Node = () => {
   const onChangeText = (payload) => setText(payload);
   const addToDo = () => {
     if (text === "") {
-      alert("nothing!");
+      return
     }
     
     const newToDos = {...toDos, [Date.now()]: {text, work:working}};
@@ -80,7 +80,7 @@ const App: () => Node = () => {
     setText("");
     
   }
-  
+   
 
   return (
     
@@ -95,14 +95,14 @@ const App: () => Node = () => {
         </TouchableOpacity>
       </View>
       
-        <TextInput 
+      <TextInput 
         
         onSubmitEditing={addToDo}
         onChangeText={onChangeText} 
-        returnKeyType="done"
         value={text}
-        placeholder={working? "Add a To Do" : "Where Do You want to go?"} 
-        style={styles.input}></TextInput>
+        returnKeyType="done"
+        placeholder={working? "Add a To Do" : "Where do you want to go?"} 
+        style={styles.input} />
       <ScrollView>
         {Object.keys(toDos).map((key) => (
          <View styles={styles.toDo} key={key}>
