@@ -58,11 +58,62 @@ const App: () => Node = () => {
        <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
        </View>
        <View style={styles.textCon}>
-         <Text>페인트</Text>
-         <Text>남양주시 - 25초전</Text> 
-         <Text>20000원</Text>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
        </View>
        </View>
+       <View style={styles.items}>
+         <View>
+       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
+       </View>
+       <View style={styles.textCon}>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
+       </View>
+       </View>
+       <View style={styles.items}>
+         <View>
+       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
+       </View>
+       <View style={styles.textCon}>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
+       </View>
+       </View>
+       <View style={styles.items}>
+         <View>
+       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
+       </View>
+       <View style={styles.textCon}>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
+       </View>
+       </View>
+       <View style={styles.items}>
+         <View>
+       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
+       </View>
+       <View style={styles.textCon}>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
+       </View>
+       </View>
+       <View style={styles.items}>
+         <View>
+       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
+       </View>
+       <View style={styles.textCon}>
+         <Text style={styles.offering}>페인트</Text>
+         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
+         <Text style={styles.price}>20,000</Text>
+       </View>
+       </View>
+       
      </ScrollView>
     </View>
    <View style={styles.footer}>
@@ -111,10 +162,21 @@ images: {
   borderRadius:10,
 },
 textCon: {
+ marginLeft:10,
   
-  justifyContent:"center"
   
+},
+offering: {
+  paddingTop:10,
+  fontSize:25,
+},
+timeAndLocation: {
+  marginTop:3,
+},
+price: {
+  fontSize:25,
 }
+
 });
 
 export default App;
