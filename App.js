@@ -7,6 +7,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -20,7 +21,8 @@ import {
   TouchableHighlight,
   TextInput,
   Alert,
-  Image
+  Image,
+  NavigationContainer
   
 } from 'react-native';
 
@@ -34,7 +36,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { theme } from './Color';
 
-
+const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
  
