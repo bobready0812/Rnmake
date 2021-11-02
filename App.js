@@ -126,7 +126,16 @@ const App: () => Node = () => {
      </ScrollView>
     </View>
    <View style={styles.footer}>
-
+   <View style={styles.home}>
+     <Text style={styles.txhome}>Home</Text>
+   </View>
+   <View style={styles.chat}>
+     <Text style={styles.txChat}>Chat</Text>
+   </View>
+   
+   <View style={styles.myPage}>
+     <Text style={styles.txMyPage}>MyPage</Text>
+   </View>
 
 
    </View>
@@ -157,6 +166,7 @@ body:{
 },
 footer: {
   flex:0.08,
+  flexDirection:"row",
   backgroundColor:"white"
 },
 items:{
@@ -211,6 +221,27 @@ alert:{
 },
 txAlert: {
   fontSize:30,
+},
+home: {
+  flex:1,
+  alignItems:"center"
+},
+chat:{
+  flex:1,
+  alignItems:"center"
+},
+myPage: {
+  flex:1,
+  alignItems:"center"
+},
+txhome: {
+  fontSize:20,
+},
+txChat: {
+  fontSize:20,
+},
+txMyPage: {
+  fontSize:20,
 }
 
 
