@@ -47,7 +47,16 @@ const App: () => Node = () => {
   return (
   <View style={styles.container}>   
      <View style={styles.header}>
-     
+       <View style={styles.ham}> 
+         <Text style={styles.txham}>H</Text>
+       </View>
+     <View style={styles.search}>
+       <Text style={styles.txSearch}>S</Text>
+       </View >  
+       
+       <View style={styles.alert}>
+         <Text style={styles.txAlert}>A</Text>
+       </View>
 
 
      </View>
@@ -137,7 +146,10 @@ container:{
 
 header: {
   flex:0.08,
-  backgroundColor:"white"
+  flexDirection:"row",
+  backgroundColor:"white",
+  justifyContent:"space-between"
+  
 },
 body:{
   flex:1,
@@ -175,7 +187,34 @@ timeAndLocation: {
 },
 price: {
   fontSize:25,
+},
+ham: {
+ marginLeft:20,
+ alignItems:"center",
+ justifyContent:"center"
+ 
+},
+txham: {
+  fontSize:20,
+},
+search:{
+  marginLeft:310,
+  marginRight:10,
+  justifyContent:"center"
+},
+txSearch:{
+  fontSize:20,
+},
+alert:{
+  marginRight:20,
+  justifyContent:"center",
+},
+txAlert: {
+  fontSize:20,
 }
+
+
+
 
 });
 
