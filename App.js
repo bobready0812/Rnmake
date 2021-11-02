@@ -113,7 +113,7 @@ const App: () => Node = () => {
          <Text style={styles.price}>20,000</Text>
        </View>
        </View>
-       
+
      </ScrollView>
     </View>
    <View style={styles.footer}>
@@ -157,8 +157,8 @@ images: {
   marginTop:10,
   marginBottom:10,
   marginLeft:10,
-  height:150,
-  width:150,
+  height:120,
+  width:120,
   borderRadius:10,
 },
 textCon: {
