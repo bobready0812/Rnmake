@@ -189,28 +189,28 @@ price: {
   fontSize:25,
 },
 ham: {
- marginLeft:20,
+ marginLeft:10,
  alignItems:"center",
  justifyContent:"center"
  
 },
 txham: {
-  fontSize:20,
+  fontSize:30,
 },
 search:{
-  marginLeft:310,
+  marginLeft:290,
   marginRight:10,
   justifyContent:"center"
 },
 txSearch:{
-  fontSize:20,
+  fontSize:30,
 },
 alert:{
-  marginRight:20,
+   marginRight:20,
   justifyContent:"center",
 },
 txAlert: {
-  fontSize:20,
+  fontSize:30,
 }
 
 
