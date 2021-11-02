@@ -7,7 +7,11 @@
  */
 
 import React, { useEffect, useState } from 'react';
+
+
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -22,7 +26,8 @@ import {
   TextInput,
   Alert,
   Image,
-  NavigationContainer
+  Button,
+
   
 } from 'react-native';
 
@@ -36,113 +41,50 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { theme } from './Color';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
+function HomeScreen ({navigation}) {
+  return(
+  <View style = {{flex:1, alignItems:"center", justifyContent:"center"}}>
+    <Text>홈스크린 입니다.</Text>
+    <Button title = "프로필 화면으로 이동" onPress={() => navigation.navigate('Profile')} />
+  </View>
+  )
+} 
+
+function ProfileScreen () {
+  return(
+  <View style = {{flex:1, alignItems:"center", justifyContent:"center"}}>
+    <Text>프로필 스크린 입니다.</Text>
+  </View>
+  )
+} 
 
 const App: () => Node = () => {
  
  
    
-   
+
   
    
 
   return (
-  <View style={styles.container}>   
-     <View style={styles.header}>
-       <View style={styles.ham}> 
-         <Text style={styles.txham}>H</Text>
-       </View>
-     <View style={styles.search}>
-       <Text style={styles.txSearch}>S</Text>
-       </View >  
-       
-       <View style={styles.alert}>
-         <Text style={styles.txAlert}>A</Text>
-       </View>
+    
+  //  <View style={ { flex:1,alignItems:"center", justifyContent:"center" }}> 
+  //    <Text>네비게이터</Text>
+  //  </View>
+    <NavigationContainer>
 
+        <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Welcome' }}
+        />
 
-     </View>
-     <View  style={styles.body}>
-     <ScrollView>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
-       <View style={styles.items}>
-         <View>
-       <Image style={styles.images} resizeMode="contain" source={require('./assets/images/paint.jpg')}></Image>
-       </View>
-       <View style={styles.textCon}>
-         <Text style={styles.offering}>페인트</Text>
-         <Text style={styles.timeAndLocation}>남양주시 - 25초전</Text> 
-         <Text style={styles.price}>20,000</Text>
-       </View>
-       </View>
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        </Stack.Navigator>
 
-     </ScrollView>
-    </View>
-   <View style={styles.footer}>
-   <View style={styles.home}>
-     <Text style={styles.txhome}>Home</Text>
-   </View>
-   <View style={styles.chat}>
-     <Text style={styles.txChat}>Chat</Text>
-   </View>
-   
-   <View style={styles.myPage}>
-     <Text style={styles.txMyPage}>MyPage</Text>
-   </View>
-
-
-   </View>
-    </View>
- 
+    </NavigationContainer>
     
    
     
@@ -150,101 +92,6 @@ const App: () => Node = () => {
 }
 
 const styles = StyleSheet.create({
-container:{
- flex:1,
- backgroundColor:"#DCDCDC"
-},
-
-header: {
-  flex:0.08,
-  flexDirection:"row",
-  backgroundColor:"white",
-  justifyContent:"space-between"
-  
-},
-body:{
-  flex:1,
-  
-},
-footer: {
-  flex:0.08,
-  flexDirection:"row",
-  backgroundColor:"white"
-},
-items:{
-  
-  flexDirection:"row",
-  marginTop:2,
-  backgroundColor:"white"
-},
-images: {
-  marginTop:10,
-  marginBottom:10,
-  marginLeft:10,
-  height:120,
-  width:120,
-  borderRadius:10,
-},
-textCon: {
- marginLeft:10,
-  
-  
-},
-offering: {
-  paddingTop:10,
-  fontSize:25,
-},
-timeAndLocation: {
-  marginTop:3,
-},
-price: {
-  fontSize:25,
-},
-ham: {
- marginLeft:10,
- alignItems:"center",
- justifyContent:"center"
- 
-},
-txham: {
-  fontSize:30,
-},
-search:{
-  marginLeft:290,
-  marginRight:10,
-  justifyContent:"center"
-},
-txSearch:{
-  fontSize:30,
-},
-alert:{
-   marginRight:20,
-  justifyContent:"center",
-},
-txAlert: {
-  fontSize:30,
-},
-home: {
-  flex:1,
-  alignItems:"center"
-},
-chat:{
-  flex:1,
-  alignItems:"center"
-},
-myPage: {
-  flex:1,
-  alignItems:"center"
-},
-txhome: {
-  fontSize:20,
-},
-txChat: {
-  fontSize:20,
-},
-txMyPage: {
-  fontSize:20,
-}
 
 
 
