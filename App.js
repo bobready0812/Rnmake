@@ -44,14 +44,21 @@ import { theme } from './Color';
 const Stack = createNativeStackNavigator(); 
 function HomeScreen ({navigation}) {
   return(
-  <View style = {{flex:1, alignItems:"center", justifyContent:"center"}}>
-    <Text>홈스크린 입니다.</Text>
-    <Button title = "프로필 화면으로 이동" onPress={() => navigation.navigate('Profile')} />
+  <View style={styles.header}>
+    <View>
+
+    </View>
+    <View>
+
+    </View>
+    <View>
+      
+    </View>
   </View>
   )
 } 
 
-function ProfileScreen () {
+function ChatScreen () {
   return(
   <View style = {{flex:1, alignItems:"center", justifyContent:"center"}}>
     <Text>프로필 스크린 입니다.</Text>
@@ -74,14 +81,17 @@ const App: () => Node = () => {
   //  </View>
     <NavigationContainer>
 
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+    headerShown: false
+  }}>
         <Stack.Screen
           name="Home"
+          
           component={HomeScreen}
-          options={{ title: 'Welcome' }}
+         
         />
 
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
         </Stack.Navigator>
 
     </NavigationContainer>
@@ -92,7 +102,11 @@ const App: () => Node = () => {
 }
 
 const styles = StyleSheet.create({
+header:{
+  flex:1,
+  backgroundColor:"red",
 
+}
 
 
 
