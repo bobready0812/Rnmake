@@ -44,15 +44,30 @@ import { theme } from './Color';
 const Stack = createNativeStackNavigator(); 
 function HomeScreen ({navigation}) {
   return(
-  <View style={styles.header}>
-    <View>
+  <View style={styles.container}>
+    <View style={styles.header}>
 
     </View>
-    <View>
+    <View style={styles.body}>
 
     </View>
-    <View>
-      
+    <View style={styles.footer}>
+     <View style={styles.homeBtn}>
+        <TouchableOpacity>
+          <Text style={{fontSize:20, color:"white"}}>홈</Text>
+        </TouchableOpacity>
+     </View>
+     <View style={styles.chatBtn}>
+       <TouchableOpacity>
+         <Text style={{fontSize:20, color:"white"}}>채팅</Text>
+       </TouchableOpacity>
+     </View>
+     <View style={styles.myPageBtn}>
+       <TouchableOpacity>
+         <Text style={{fontSize:20, color:"white"}}>마이 페이지</Text>
+       </TouchableOpacity>
+     </View>
+
     </View>
   </View>
   )
@@ -102,11 +117,43 @@ const App: () => Node = () => {
 }
 
 const styles = StyleSheet.create({
+ 
+ container: {
+   flex:1,
+   
+ }
+  , 
 header:{
-  flex:1,
-  backgroundColor:"red",
+  flex:0.08,
+  backgroundColor:"white",
 
+},
+body: {
+  flex:1,
+  backgroundColor:"#FFFFCC"
+},
+footer: {
+  flex:0.08,
+  backgroundColor: "skyblue",
+  flexDirection:"row"
+
+},
+homeBtn: {
+  flex:1,
+  alignItems:"center",
+  justifyContent:"center",
+},
+chatBtn: {
+  flex:1,
+  alignItems:"center",
+  justifyContent:"center",
+},
+myPageBtn: {
+  flex:1,
+  alignItems:"center",
+  justifyContent:"center",
 }
+
 
 
 
