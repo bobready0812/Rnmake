@@ -49,21 +49,25 @@ function HomeScreen ({navigation}) {
 
     </View>
     <View style={styles.body}>
-
+     <View>
+       <TouchableOpacity onPress={() => navigation.navigate('AddItems')}>
+         <Text>상품 추가하기</Text>
+       </TouchableOpacity>
+     </View>
     </View>
     <View style={styles.footer}>
      <View style={styles.homeBtn}>
         <TouchableOpacity>
-          <Text style={{fontSize:20, color:"white"}}>홈</Text>
+          <Text style={{fontSize:20, color:"black"}}>홈</Text>
         </TouchableOpacity>
      </View>
      <View style={styles.chatBtn}>
-       <TouchableOpacity>
+       <TouchableOpacity onPress={() => navigation.navigate('ChatScreen')}>
          <Text style={{fontSize:20, color:"white"}}>채팅</Text>
        </TouchableOpacity>
      </View>
      <View style={styles.myPageBtn}>
-       <TouchableOpacity>
+       <TouchableOpacity onPress={() => navigation.navigate('MyPage')} >
          <Text style={{fontSize:20, color:"white"}}>마이 페이지</Text>
        </TouchableOpacity>
      </View>
@@ -73,11 +77,87 @@ function HomeScreen ({navigation}) {
   )
 } 
 
-function ChatScreen () {
+function ChatScreen ({navigation}) {
   return(
-  <View style = {{flex:1, alignItems:"center", justifyContent:"center"}}>
-    <Text>프로필 스크린 입니다.</Text>
+    <View style={styles.container}>
+    <View style={styles.header}>
+
+    </View>
+    <View style={styles.body}>
+
+    </View>
+    <View style={styles.footer}>
+     <View style={styles.homeBtn}>
+        <TouchableOpacity>
+          <Text style={{fontSize:20, color:"white"}}>홈</Text>
+        </TouchableOpacity>
+     </View>
+     <View style={styles.chatBtn}>
+       <TouchableOpacity onPress={() => navigation.navigate('ChatScreen')}>
+         <Text style={{fontSize:20, color:"black"}}>채팅</Text>
+       </TouchableOpacity>
+     </View>
+     <View style={styles.myPageBtn}>
+       <TouchableOpacity onPress={() => navigation.navigate('MyPage')} >
+         <Text style={{fontSize:20, color:"white"}}>마이 페이지</Text>
+       </TouchableOpacity>
+     </View>
+
+    </View>
   </View>
+  )
+} 
+
+
+function MyPage ({navigation}) {
+  return(
+    <View style={styles.container}>
+    <View style={styles.header}>
+
+    </View>
+    <View style={styles.body}>
+
+    </View>
+    <View style={styles.footer}>
+     <View style={styles.homeBtn}>
+        <TouchableOpacity>
+          <Text style={{fontSize:20, color:"white"}}>홈</Text>
+        </TouchableOpacity>
+     </View>
+     <View style={styles.chatBtn}>
+       <TouchableOpacity onPress={() => navigation.navigate('ChatScreen')}>
+         <Text style={{fontSize:20, color:"white"}}>채팅</Text>
+       </TouchableOpacity>
+     </View>
+     <View style={styles.myPageBtn}>
+       <TouchableOpacity onPress={() => navigation.navigate('MyPage')} >
+         <Text style={{fontSize:20, color:"black"}}>마이 페이지</Text>
+       </TouchableOpacity>
+     </View>
+
+    </View>
+  </View>
+  )
+} 
+function AddItems ({navigation}) {
+  return(
+ <View style={{flex:1}}>
+ <View style={{flex:1, backgroundColor: "white"}}>
+  
+ </View>
+ <View style={{flex:1, backgroundColor:"#FFFFCC"}}>
+ <TextInput></TextInput>
+ </View>
+ <View style={{flex:1, backgroundColor: "white"}}>
+ 
+ </View>
+ <View style={{flex:1, backgroundColor:"#FFFFCC"}}>
+ <TextInput></TextInput>
+ </View>
+ <View style={{flex:1, backgroundColor: "white"}}>
+ <TextInput></TextInput>
+ </View>
+ </View>   
   )
 } 
 
@@ -107,7 +187,11 @@ const App: () => Node = () => {
         />
 
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen name="MyPage" component={MyPage} />
+        <Stack.Screen name="AddItems" component={AddItems} />
         </Stack.Navigator>
+       
+        
 
     </NavigationContainer>
     
