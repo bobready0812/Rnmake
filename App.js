@@ -139,23 +139,56 @@ function MyPage ({navigation}) {
   </View>
   )
 } 
+
+
+
+
+
 function AddItems ({navigation}) {
+  const [itemName, setItemName] = useState("")
+  const [price, setPrice] = useState("")
+  const [content, setContent] = useState("") 
+  const [itemResult, setItemResult] = useState({})
+  
+  
+  function onChangeItemName(items) {
+    setItemName(items);
+    
+   }
+   
+   function onChangePrice(prices) {
+     setPrice(prices);
+   }
+   
+   function onChangeContent(contents) {
+     setContent(contents);
+   }
+
+   function submitMyItem () {
+     setItemResult({[Date.now()]:{itemName, price, content}})
+     console.log(itemResult);
+     
+   }
+
   return(
  <View style={{flex:1}}>
- <View style={{flex:1, backgroundColor: "white"}}>
+ <View style={{flex:1, backgroundColor: "skyblue"}}>
   
  </View>
  <View style={{flex:1, backgroundColor:"#FFFFCC"}}>
- <TextInput></TextInput>
+ <TextInput onChangeText={onChangeItemName} value={itemName}></TextInput>
  </View>
- <View style={{flex:1, backgroundColor: "white"}}>
+ <View style={{flex:1, backgroundColor: "skyblue"}}>
  
  </View>
  <View style={{flex:1, backgroundColor:"#FFFFCC"}}>
- <TextInput></TextInput>
+ <TextInput onChangeText={onChangePrice} value={price}></TextInput>
  </View>
- <View style={{flex:1, backgroundColor: "white"}}>
- <TextInput></TextInput>
+ <View style={{flex:1, backgroundColor: "skyblue"}}>
+ <TextInput onChangeText={onChangeContent} value={content}></TextInput>
+ <TouchableOpacity onPress={submitMyItem}>
+   <Text>제출</Text>
+ </TouchableOpacity>
  </View>
  </View>   
   )
@@ -163,10 +196,7 @@ function AddItems ({navigation}) {
 
 const App: () => Node = () => {
  
- 
-   
 
-  
    
 
   return (
