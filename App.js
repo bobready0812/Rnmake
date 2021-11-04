@@ -40,6 +40,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { theme } from './Color';
+import UploadImage from './components/UploadImage';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -49,29 +50,16 @@ const Stack = createNativeStackNavigator();
 
 
 const App: () => Node = () => {
- 
+  
 
    
 
   return (
   <View style={styles.container}>
-   <ScrollView style={{flexGrow:1 }}> 
-   <View style={{flex:1, backgroundColor:"skyblue"}}>
-
-   </View>
-   
-   <View>
-     
-     </View>
-
-     <View>
-     
-     </View>
-  
-
-
-   </ScrollView>
-
+   <TextInput style={styles.textInput}></TextInput>
+   <TextInput style={styles.textInput}></TextInput>
+   <TextInput style={styles.textInput}></TextInput>
+   <UploadImage />
   </View>
     
 
@@ -82,6 +70,12 @@ const App: () => Node = () => {
 const styles = StyleSheet.create({
  container:{
    flex:1,
+   backgroundColor:"black"
+ },
+ textInput: {
+   backgroundColor:"white",
+   marginTop:20,
+   
  }
  
 
